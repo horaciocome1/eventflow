@@ -18,10 +18,8 @@ package io.github.horaciocome1.busflow.ui.main
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import io.github.horaciocome1.busflow.data.GetPostsEvent
 import io.github.horaciocome1.busflow.data.PostsRepository
-import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -43,9 +41,7 @@ class EventBusViewModel(
     }
 
     fun retrievePosts() {
-        viewModelScope.launch {
-            repository.getPosts(listenToUpdates = true, updatesCount = 5)
-        }
+        repository.getPosts(listenToUpdates = true, updatesCount = 5)
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
